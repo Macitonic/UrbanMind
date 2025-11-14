@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Urban Mind KPLC Image Uploader</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #response { margin-top: 20px; padding: 10px; border: 1px solid #ccc; white-space: pre-wrap; background-color: #f4f4f4; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
 </head>
 <body>
-    
+    <h1>Upload KPLC Issue Image</h1>
+
+    <form id="imageUploadForm">
+        <label for="fileInput">Select Image:</label>
+        <input type="file" id="fileInput" name="issueImage" accept="image/*" required>
+        <br><br>
+        <label for="issueDescription">Description:</label>
+        <input type="text" id="issueDescription" name="description" placeholder="Faulty transformer location" required>
+        <br><br>
+        <button type="submit">Submit Issue</button>
+    </form>
+
+    <h2>Server Response:</h2>
+    <div id="response">Waiting for submission...</div>
+
+    <script>
+        // JavaScript logic goes here
+        document.getElementById('imageUploadForm').addEventListener('submit', async function(event) {
+            // 1. Prevent the default form submission (which reloads the page)
+            event.preventDefault();
+
+            const form = event.target;
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = 'Submitting...';
+            
+            // 2. Create the FormData object
+            const formData = new FormData(form);
+
+            // You can manually append other key-value pairs if needed:
+            // formData.append('location', 'Westlands');
+
+            // 3. Send the request using the Fetch API
+            try {
+                const result = await fetch('http://localhost:3000/image/submit', {
+                    method: 'POST',
+                    // IMPORTANT: Do NOT set the 'Content-Type' header. 
+                    // The browser handles it automatically for FormData, 
+                    // including the necessary boundary marker for files.
+                    body: formData, 
+                });
+
+                const data = await result.json();
+
+                if (result.ok) {
+                    responseDiv.className = 'success';
+                    responseDiv.innerHTML = `SUCCESS! Status: ${result.status}\n\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    responseDiv.className = 'error';
+                    responseDiv.innerHTML = `ERROR! Status: ${result.status}\n\n${JSON.stringify(data, null, 2)}`;
+                }
+
+            } catch (error) {
+                responseDiv.className = 'error';
+                responseDiv.innerHTML = `Submission Failed: ${error.message}`;
+            }
+        });
+    </script>
 </body>
 </html>
