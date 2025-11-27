@@ -1,9 +1,9 @@
 import "./hero.css";
+import {useNavigate} from "react-router-dom";
+
 import Button from"../button"
 const hero = () => {
-  const handleClick = ()=>{
-    alert("Report Button Clicked")
-  }
+  const navigate = useNavigate();
   return (
 
     <div>
@@ -11,7 +11,7 @@ const hero = () => {
         <img src="" alt="hero-image" />
         <h1>UrbanMind</h1>
         <p>Report electricity issues instantly</p>
-        <Button text="Report an Issue" onClick={handleClick} type="button"/>
+        <Button text="Report an Issue" onClick={()=> navigate("/report")} type="button"/>
       </div>
 
       <footer className="links">

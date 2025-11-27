@@ -1,7 +1,9 @@
 import "./navbar.css";
 import Button from "../button";
+import { useNavigate } from "react-router-dom";
 
 const navbar = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <header>
@@ -19,13 +21,11 @@ const navbar = () => {
               <a href="#">About</a>
             </li>
             <li>
-              <a href="#">
-                <Button
-                  text="Report Issue"
-                  onClick={console.log("navbar clicked")}
-                  type="button"
-                />
-              </a>
+              <Button
+                text="Report Issue"
+                onClick={() => navigate("/report")}
+                type="button"
+              />
             </li>
           </ul>
         </nav>
