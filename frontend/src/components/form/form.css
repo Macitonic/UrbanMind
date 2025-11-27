@@ -1,0 +1,9 @@
+.imageUpload input{
+    width: 300px;
+    height: 400px;
+}
+
+.imageUpload{
+    display: flex;
+    flex-direction: column;
+}
