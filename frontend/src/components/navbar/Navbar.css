@@ -1,0 +1,43 @@
+header{
+  margin: 0 3%;
+  
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  margin-right: 10px;
+}
+
+.logo p {
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(32, 31, 31);
+  transition: all 3s ease-in-out;
+}
+
+a:hover{
+  transform: scale(1.5);
+  text-decoration: underline;
+}
+
+
+
+.lineBreak{
+  background: grey;
+  height: 1px;
+}
