@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Report = () => {
   return (
@@ -6,20 +6,22 @@ const Report = () => {
       <p>PowerReport</p>
       <h2>Report an Electricity Issue</h2>
 
-      <form action="" method='post' encType=''>
+      <form
+        action="http://localhost:5000/report"
+        method="POST"
+        encType="multipart/form-data"
+      >
         <label htmlFor="uploads">Upload a Photo</label>
-        <input type="file" multiple="multiple" accept='image/jpeg, image/png, image/jpg'/>
+        <input
+          type="file"
+          multiple={false}
+          accept="image/jpeg, image/png, image/jpg"
+          name="image"
+        />
+        <button type="submit">Submit Report</button>
       </form>
-
-      <div className='location'>
-        <p>Share Your Location</p>
-        <map name=""></map>
-        <button>Use Current Location</button>
-      </div>
-
-      <button type='submit'>Submit Report</button>
     </div>
-  )
-}
+  );
+};
 
-export default Report
+export default Report;
