@@ -17,7 +17,12 @@ const Report = () => {
           multiple={false}
           accept="image/jpeg, image/png, image/jpg"
           name="image"
+          required
         />
+        <label htmlFor="description">What is the Issue</label>
+        <input type="text" name="description" placeholder="A brief description of the issue"/>
+        <label htmlFor="phone-number">Phone Number</label>
+        <input type="tell" name="phoneNumber"  placeholder="Enter your phone number"/>
         <button type="submit">Submit Report</button>
       </form>
     </div>

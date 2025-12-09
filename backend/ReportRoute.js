@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import multer from "multer";
 import path from "path";
-import Report from "./models/Report.js";
+import Report from "./models/ReportModel.js";
 
 const router = express.Router();
 
@@ -21,11 +21,12 @@ const storage = multer.diskStorage({
 
 const uploads = multer({ storage });
 
-router.post("/", uploads.single("image"), (req, res) => {
+router.post("/", uploads.single("image"), async(req, res) => {
   try {
-    const newReport = Report.create({
+    const newReport = await Report.create({
       imageUrl: req.file.path,
       description: req.body.description || "",
+      phoneNumber: req.body.phoneNumber || "0712345678"
     });
 
     res.status(201).json({
