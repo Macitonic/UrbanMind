@@ -21,12 +21,12 @@ const storage = multer.diskStorage({
 
 const uploads = multer({ storage });
 
-router.post("/", uploads.single("image"), async(req, res) => {
+router.post("/", uploads.single("image"), async (req, res) => {
   try {
     const newReport = await Report.create({
       imageUrl: req.file.path,
       description: req.body.description || "",
-      phoneNumber: req.body.phoneNumber || "0712345678"
+      phoneNumber: req.body.phoneNumber,
     });
 
     res.status(201).json({
@@ -34,8 +34,16 @@ router.post("/", uploads.single("image"), async(req, res) => {
       data: newReport,
     });
   } catch (err) {
-    res.status(500).json({ message: "Error occured while saving the report" });
+    return res.status(400).json({
+      message: "Validation failed",
+      errors: err.errors,
+    });
   }
+
+  console.error(err);
+  res.status(500).json({
+    message: "An internal server error occured while saving the report",
+  });
 });
 
 export default router;
