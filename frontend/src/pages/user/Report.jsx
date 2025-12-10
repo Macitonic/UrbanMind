@@ -10,6 +10,7 @@ const Report = () => {
         action="http://localhost:5000/report"
         method="POST"
         encType="multipart/form-data"
+        
       >
         <label htmlFor="uploads">Upload a Photo</label>
         <input
