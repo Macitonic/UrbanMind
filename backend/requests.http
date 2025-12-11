@@ -1,0 +1,11 @@
+GET http://localhost:5000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRoZWV2aXJhbHB1bHNlQGdtYWlsLmNvbSIsImlhdCI6MTc2NTQ2MzgxOH0.GLafSzR4T3FVtyya34Sd1_crLCf05PhfIe_NDA0lf_c
+
+###
+POST http://localhost:5000/admin-login
+Content-Type: application/json
+
+
+{
+    "adminEmail": "theeviralpulse@gmail.com"
+}

@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/user/Home";
 import Report from "./pages/user/Report";
-import AdminLogin from "./pages/admin/AdminLogin";
-import Dashboard from "./pages/admin/dashboard";
-import AdminReport from "./pages/admin/adminReports";
+import AdminLogin from "./pages/admin/login/AdminLogin";
+import Dashboard from "./pages/admin/dashboard/Dashboard";
+import AdminReport from "./pages/admin/admin reports/adminReports";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import "./App.css";
 
