@@ -21,7 +21,7 @@ const App = () => {
         {/*Admin Protected pages*/}
 
         <Route
-          path="/admin-dashboard"
+          path="admin/dashboard"
           element={
             <ProtectedRoutes>
               <Dashboard />
@@ -30,7 +30,7 @@ const App = () => {
         ></Route>
 
         <Route
-          path="/admin-reports"
+          path="/admin/reports"
           element={
             <ProtectedRoutes>
               <AdminReport />
